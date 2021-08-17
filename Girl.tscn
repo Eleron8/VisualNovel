@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Art/Characters/clipart2085386.png" type="Texture" id=1]
+
+[node name="Girl" type="Node2D"]
+
+[node name="clipart2085386" type="Sprite" parent="."]
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 1 )

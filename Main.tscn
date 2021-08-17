@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Girl.tscn" type="PackedScene" id=1]
+[ext_resource path="res://BackGround.gd" type="Script" id=2]
+[ext_resource path="res://Dialoge.gd" type="Script" id=3]
+[ext_resource path="res://Font/AerologicaRegular-K7day.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Control.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_space = 5
+font_data = ExtResource( 4 )
+
+[node name="Main" type="Node"]
+
+[node name="BackGround" type="Node2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="BackGround"]
+position = Vector2( 480, 245 )
+
+[node name="Girl" parent="." instance=ExtResource( 1 )]
+position = Vector2( 288.556, 501.71 )
+
+[node name="Dialoge" type="Node" parent="."]
+script = ExtResource( 3 )
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextBox" type="ColorRect" parent="Control"]
+margin_left = 32.7245
+margin_top = 367.703
+margin_right = 929.724
+margin_bottom = 488.703
+color = Color( 1, 1, 1, 0.694118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Control/TextBox"]
+
+[node name="ColorRect" type="ColorRect" parent="Control/TextBox"]
+margin_top = -19.0
+margin_right = 78.0
+color = Color( 1, 1, 1, 0.694118 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/TextBox"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 4.16222
+margin_top = 0.297302
+margin_right = 900.162
+margin_bottom = 119.297
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+override_selected_font_color = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameLabel" type="Label" parent="Control/TextBox"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+margin_left = 15.0
+margin_top = -18.0
+margin_right = 325.0
+margin_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button1" type="Button" parent="Control"]
+margin_left = 316.0
+margin_top = 150.0
+margin_right = 680.0
+margin_bottom = 203.0
+
+[node name="Button2" type="Button" parent="Control"]
+margin_left = 316.0
+margin_top = 264.0
+margin_right = 680.0
+margin_bottom = 317.0
+
+[connection signal="tween_completed" from="Control/TextBox/Tween" to="Control" method="_on_Tween_tween_completed"]
+[connection signal="pressed" from="Control/Button1" to="Control" method="_on_Button1_pressed"]
+[connection signal="pressed" from="Control/Button2" to="Control" method="_on_Button2_pressed"]
